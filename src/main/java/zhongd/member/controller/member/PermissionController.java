@@ -12,9 +12,7 @@ import zhongd.coiplatform.utils.constant.ReturnCode;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @author xiezd
- * @Date 2018-01-04 10:50
- * @Description 成员登录Controller
+ * @author xiezd 2018-01-04 10:50
  */
 @RestController
 public class PermissionController extends BaseController {
