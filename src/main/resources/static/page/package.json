@@ -6,6 +6,7 @@
   "dependencies": {
     "amazeui": "^2.7.2",
     "angular": "^1.6.7",
+    "angular-cookies": "^1.6.8",
     "angular-route": "^1.6.8"
   },
   "devDependencies": {},

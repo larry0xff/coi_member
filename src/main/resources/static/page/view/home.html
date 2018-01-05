@@ -1,0 +1,114 @@
+<section class="am-g">
+    <ul data-am-widget="gallery" class="am-gallery am-avg-sm-2 am-gallery-imgbordered" data-am-gallery="{pureview:{target: 'a'}}">
+        <li>
+            <div class="am-gallery-item">
+                <img src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg" alt="远方 有一个地方 那里种有我们的梦想"/>
+                <h3 class="am-gallery-title">远方 有一个地方 那里种有我们的梦想</h3>
+                <div class="am-gallery-desc">2375-09-26</div>
+            </div>
+        </li>
+        <li>
+            <div class="am-gallery-item">
+                <img src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg" alt="某天 也许会相遇 相遇在这个好地方"/>
+                <h3 class="am-gallery-title">某天 也许会相遇 相遇在这个好地方</h3>
+                <div class="am-gallery-desc">2375-09-26</div>
+            </div>
+        </li>
+    </ul>
+</section>
+<section class="am-g">
+    <div class="am-u-sm-12 am-u-md-4 center">
+        <div data-am-widget="list_news" class="am-list-news am-list-news-default">
+            <!--列表标题-->
+            <div class="am-list-news-hd am-cf">
+                <!--带更多链接-->
+                <a href="###" class="">
+                    <h2>信箱</h2>
+                </a>
+            </div>
+            <div class="am-list-news-bd">
+                <ul class="am-list">
+                    <li class="am-g am-list-item-desced" ng-repeat="org in pagedata.orgList.list">
+                        <small>{{org.name}}<a href class="am-fr am-margin-right-sm">发送信件</a></small>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="am-u-sm-12 am-u-md-8 center">
+        <div data-am-widget="list_news" class="am-list-news am-list-news-default">
+            <!--列表标题-->
+            <div class="am-list-news-hd am-cf">
+                <!--带更多链接-->
+                <a href="###" class="">
+                    <h2>意见征集</h2>
+                    <span class="am-list-news-more am-fr">更多 &raquo;</span>
+                </a>
+            </div>
+            <div class="am-list-news-bd">
+                <ul class="am-list">
+                    <li class="am-g am-list-item-desced" ng-repeat="x in pagedata.collections | limitTo: 8">
+                        <a href="http://www.douban.com/online/11614662/"
+                           class="am-list-item-hd ">{{x.subject}}</a>
+                        <div class="am-list-item-text">
+                            {{x.content}}
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="am-g">
+    <div data-am-widget="titlebar" class="am-titlebar am-titlebar-default" >
+        <h2 class="am-titlebar-title ">
+            讨论交流区
+        </h2>
+        <nav class="am-titlebar-nav">
+            <a href="#more" class="">more &raquo;</a>
+        </nav>
+    </div>
+    <article class="am-comment am-u-sm-12 am-margin-top-lg"> <!-- 评论容器 -->
+        <a href="">
+            <img class="am-comment-avatar" alt="" src="http://cms-bucket.nosdn.127.net/2de2b77dcf764a208d93f1dd32c9e17720180105111403.png?imageView&thumbnail=190y120"/> <!-- 评论者头像 -->
+        </a>
+        <div class="am-comment-main"> <!-- 评论内容容器 -->
+            <header class="am-comment-hd">
+                <div class="am-comment-meta"> <!-- 评论元数据 -->
+                    <a href="#link-to-user" class="am-comment-author">吴卫华</a> <!-- 评论者 -->
+                    <span class="am-fr">发表于 <time datetime="">2017-12-29</time></span>
+                </div>
+            </header>
+            <div class="am-comment-bd">我觉得，我补测能过</div> <!-- 评论内容 -->
+        </div>
+    </article>
+    <article class="am-comment am-u-sm-12 am-margin-top-lg"> <!-- 评论容器 -->
+        <a href="">
+            <img class="am-comment-avatar" alt="" src="http://cms-bucket.nosdn.127.net/2c87ca54a8b4454483d300e0719a7c5c20180105074309.png?imageView&thumbnail=190y120"/> <!-- 评论者头像 -->
+        </a>
+        <div class="am-comment-main"> <!-- 评论内容容器 -->
+            <header class="am-comment-hd">
+                <div class="am-comment-meta"> <!-- 评论元数据 -->
+                    <a href="#link-to-user" class="am-comment-author">袁尚文</a> <!-- 评论者 -->
+                    <span class="am-fr">发表于 <time datetime="">2017-12-29</time></span>
+                </div>
+            </header>
+            <div class="am-comment-bd">切！</div> <!-- 评论内容 -->
+        </div>
+    </article>
+    <article class="am-comment am-u-sm-12 am-margin-top-lg"> <!-- 评论容器 -->
+        <a href="">
+            <img class="am-comment-avatar" alt="" src="https://farm4.staticflickr.com/3835/15329524682_2642280b33_z.jpg"/> <!-- 评论者头像 -->
+        </a>
+        <div class="am-comment-main"> <!-- 评论内容容器 -->
+            <header class="am-comment-hd">
+                <div class="am-comment-meta"> <!-- 评论元数据 -->
+                    <a href="#link-to-user" class="am-comment-author">张国浩</a> <!-- 评论者 -->
+                    <span class="am-fr">发表于 <time datetime="">2018-01-02</time></span>
+                </div>
+            </header>
+            <div class="am-comment-bd">不存在的</div> <!-- 评论内容 -->
+        </div>
+    </article>
+</section>

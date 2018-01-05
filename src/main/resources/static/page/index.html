@@ -26,35 +26,32 @@
     <!--页头-->
     <header class="am-topbar am-topbar-fixed-top">
         <h1 class="am-topbar-brand">
-            <a href="#index">采集</a>
+            <a href="#index">什么垃圾系统</a>
         </h1>
         <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#doc-topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
         <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
             <ul class="am-nav am-nav-pills am-topbar-nav">
-                <li class="am-active"><a href="#index">首页</a></li>
-                <li><a href="#login">项目</a></li>
-                <li class="am-dropdown" data-am-dropdown>
+                <li><a href="#home">首页</a></li>
+                <li><a href="#adviceCollectionList">意见征集</a></li>
+                <li class="am-dropdown" data-am-dropdown ng-show="realname">
                     <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
-                        下拉 <span class="am-icon-caret-down"></span>
+                        {{realname}} <span class="am-icon-caret-down"></span>
                     </a>
                     <ul class="am-dropdown-content">
-                        <li class="am-dropdown-header">标题</li>
-                        <li><a href="#">1. 去月球</a></li>
-                        <li class="am-active"><a href="#">2. 去火星</a></li>
-                        <li><a href="#">3. 还是回地球</a></li>
-                        <li class="am-disabled"><a href="#">4. 下地狱</a></li>
-                        <li class="am-divider"></li>
-                        <li><a href="#">5. 桥头一回首</a></li>
+                        <li class="am-dropdown-header">请选择</li>
+                        <li><a href="#">我的信箱</a></li>
+                        <li><a href="#">征集消息</a></li>
                     </ul>
                 </li>
             </ul>
             <div class="am-topbar-right">
-                <button class="am-btn am-btn-primary am-topbar-btn am-btn-sm" ng-click="openLoginModal()">登录</button>
+                <button class="am-btn am-btn-primary am-topbar-btn am-btn-sm" ng-click="openLoginModal()" ng-if="!isLogin">登录</button>
+                <button class="am-btn am-btn-primary am-topbar-btn am-btn-sm" ng-click="logout()" ng-if="isLogin">退出</button>
             </div>
         </div>
     </header>
     <!--主体内容-->
-    <div class="am-container">
+    <div class="am-container am-margin-top-sm" style="margin-bottom: 200px">
         <ng-view>
         </ng-view>
     </div>
@@ -66,12 +63,13 @@
     <script src="node_modules/amazeui/dist/js/amazeui.min.js"></script>
     <script src="node_modules/angular/angular.js"></script>
     <script src="node_modules/angular-route/angular-route.min.js"></script>
+    <script src="node_modules/angular-cookies/angular-cookies.min.js"></script>
     <!-- 基础控制器、全局配置、路由配置 -->
     <script src="js/controller/mainCtrl.js"></script>
     <script src="js/config/app_config.js"></script>
     <script src="js/config/route_config.js"></script>
     <!-- 各页面controller -->
-    <script src="js/controller/indexCtrl.js"></script>
+    <script src="js/controller/homeCtrl.js"></script>
     <script src="js/controller/loginCtrl.js"></script>
 
 </body>

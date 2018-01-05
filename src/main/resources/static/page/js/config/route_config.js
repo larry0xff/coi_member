@@ -4,14 +4,14 @@ memberApp.config(function ($routeProvider, $locationProvider) {
     $locationProvider.hashPrefix('');
     $routeProvider
     .when(
-        '/index',
+        '/home',
         {
-            templateUrl: 'view/index.html',
-            controller: 'indexCtrl'
+            templateUrl: 'view/home.html',
+            controller: 'homeCtrl'
         }
     ).otherwise(
         {
-            redirectTo: '/index'
+            redirectTo: '/home'
         }
     )
 });
