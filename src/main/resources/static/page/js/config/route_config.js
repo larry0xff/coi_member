@@ -9,6 +9,18 @@ memberApp.config(function ($routeProvider, $locationProvider) {
             templateUrl: 'view/home.html',
             controller: 'homeCtrl'
         }
+    ).when(
+        '/commentPage',
+        {
+            templateUrl: 'view/comments.html',
+            controller: 'commentsCtrl'
+        }
+    ).when(
+        '/collections',
+        {
+            templateUrl: 'view/collections.html',
+            controller: 'collectionsCtrl'
+        }
     ).otherwise(
         {
             redirectTo: '/home'

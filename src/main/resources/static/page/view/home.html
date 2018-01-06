@@ -1,3 +1,6 @@
+<ol class="am-breadcrumb">
+    <li><a class="am-icon-home am-active">首页</a></li>
+</ol>
 <section class="am-g">
     <ul data-am-widget="gallery" class="am-gallery am-avg-sm-2 am-gallery-imgbordered" data-am-gallery="{pureview:{target: 'a'}}">
         <li>
@@ -40,7 +43,7 @@
             <!--列表标题-->
             <div class="am-list-news-hd am-cf">
                 <!--带更多链接-->
-                <a href="###" class="">
+                <a href="#/collections" class="">
                     <h2>意见征集</h2>
                     <span class="am-list-news-more am-fr">更多 &raquo;</span>
                 </a>
@@ -66,49 +69,29 @@
             讨论交流区
         </h2>
         <nav class="am-titlebar-nav">
-            <a href="#more" class="">more &raquo;</a>
+            <a href="#/commentPage" class="">更多 &raquo;</a>
         </nav>
     </div>
-    <article class="am-comment am-u-sm-12 am-margin-top-lg"> <!-- 评论容器 -->
+    <div class="am-comments-list">
+    <article class="am-comment am-u-sm-12 am-margin-top-lg" ng-repeat="c in commentList"> <!-- 评论容器 -->
         <a href="">
             <img class="am-comment-avatar" alt="" src="http://cms-bucket.nosdn.127.net/2de2b77dcf764a208d93f1dd32c9e17720180105111403.png?imageView&thumbnail=190y120"/> <!-- 评论者头像 -->
         </a>
         <div class="am-comment-main"> <!-- 评论内容容器 -->
             <header class="am-comment-hd">
                 <div class="am-comment-meta"> <!-- 评论元数据 -->
-                    <a href="#link-to-user" class="am-comment-author">吴卫华</a> <!-- 评论者 -->
-                    <span class="am-fr">发表于 <time datetime="">2017-12-29</time></span>
+                    <a href="#link-to-user" class="am-comment-author">{{c.createBy}}</a> <!-- 评论者 -->
+                    <span class="am-fr">发表于 <time datetime="">{{c.createTime}}</time></span>
                 </div>
             </header>
-            <div class="am-comment-bd">我觉得，我补测能过</div> <!-- 评论内容 -->
-        </div>
-    </article>
-    <article class="am-comment am-u-sm-12 am-margin-top-lg"> <!-- 评论容器 -->
-        <a href="">
-            <img class="am-comment-avatar" alt="" src="http://cms-bucket.nosdn.127.net/2c87ca54a8b4454483d300e0719a7c5c20180105074309.png?imageView&thumbnail=190y120"/> <!-- 评论者头像 -->
-        </a>
-        <div class="am-comment-main"> <!-- 评论内容容器 -->
-            <header class="am-comment-hd">
-                <div class="am-comment-meta"> <!-- 评论元数据 -->
-                    <a href="#link-to-user" class="am-comment-author">袁尚文</a> <!-- 评论者 -->
-                    <span class="am-fr">发表于 <time datetime="">2017-12-29</time></span>
+            <div class="am-comment-bd">
+                <div>{{c.content}}</div>
+                <div class="am-vertical-align-bottom am-fr am-margin-top-sm am-text-sm">
+                    <span class="am-icon-thumbs-o-up"> {{c.agree}}</span>&nbsp;&nbsp;
+                    <span class="am-icon-thumbs-o-down"> {{c.against}}</span>&nbsp;&nbsp;
                 </div>
-            </header>
-            <div class="am-comment-bd">切！</div> <!-- 评论内容 -->
+            </div> <!-- 评论内容 -->
         </div>
     </article>
-    <article class="am-comment am-u-sm-12 am-margin-top-lg"> <!-- 评论容器 -->
-        <a href="">
-            <img class="am-comment-avatar" alt="" src="https://farm4.staticflickr.com/3835/15329524682_2642280b33_z.jpg"/> <!-- 评论者头像 -->
-        </a>
-        <div class="am-comment-main"> <!-- 评论内容容器 -->
-            <header class="am-comment-hd">
-                <div class="am-comment-meta"> <!-- 评论元数据 -->
-                    <a href="#link-to-user" class="am-comment-author">张国浩</a> <!-- 评论者 -->
-                    <span class="am-fr">发表于 <time datetime="">2018-01-02</time></span>
-                </div>
-            </header>
-            <div class="am-comment-bd">不存在的</div> <!-- 评论内容 -->
-        </div>
-    </article>
+    </div>
 </section>

@@ -32,7 +32,7 @@
         <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
             <ul class="am-nav am-nav-pills am-topbar-nav">
                 <li><a href="#home">首页</a></li>
-                <li><a href="#adviceCollectionList">意见征集</a></li>
+                <li><a href="#collections">意见征集</a></li>
                 <li class="am-dropdown" data-am-dropdown ng-show="realname">
                     <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
                         {{realname}} <span class="am-icon-caret-down"></span>
@@ -41,12 +41,13 @@
                         <li class="am-dropdown-header">请选择</li>
                         <li><a href="#">我的信箱</a></li>
                         <li><a href="#">征集消息</a></li>
+                        <li><a href="#">评论消息</a></li>
                     </ul>
                 </li>
             </ul>
             <div class="am-topbar-right">
-                <button class="am-btn am-btn-primary am-topbar-btn am-btn-sm" ng-click="openLoginModal()" ng-if="!isLogin">登录</button>
-                <button class="am-btn am-btn-primary am-topbar-btn am-btn-sm" ng-click="logout()" ng-if="isLogin">退出</button>
+                <button class="am-btn am-btn-primary am-topbar-btn am-btn-sm" ng-click="openLoginModal()" ng-show="!realname">登录</button>
+                <button class="am-btn am-btn-primary am-topbar-btn am-btn-sm" ng-click="logout()" ng-show="realname">退出</button>
             </div>
         </div>
     </header>
@@ -71,6 +72,8 @@
     <!-- 各页面controller -->
     <script src="js/controller/homeCtrl.js"></script>
     <script src="js/controller/loginCtrl.js"></script>
+    <script src="js/controller/commentsCtrl.js"></script>
+    <script src="js/controller/collectionsCtrl.js"></script>
 
 </body>
 
