@@ -19,6 +19,8 @@ target/
 nbproject/private/
 build/
 nbbuild/
-dist/
 nbdist/
 .nb-gradle/
+
+### 前端npm包文件夹屏蔽 ###
+node_modules/
