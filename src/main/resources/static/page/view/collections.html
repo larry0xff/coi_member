@@ -3,5 +3,19 @@
     <li class="am-active">征集列表</li>
 </ol>
 <section>
+    <div data-am-widget="list_news" class="am-list-news am-list-news-default" >
+        <!--列表标题-->
+        <div class="am-list-news-bd">
+            <ul class="am-list">
+                <li class="am-g am-list-item-desced" ng-repeat="x in collections">
+                    <a href="#/collection/{{x.igAdviceCollectionId}}"
+                       class="am-list-item-hd ">{{x.subject}}</a>
+                    <div class="am-list-item-text">
+                        {{x.content | limitTo: 20}}...
+                    </div>
+                </li>
+            </ul>
+        </div>
 
+    </div>
 </section>

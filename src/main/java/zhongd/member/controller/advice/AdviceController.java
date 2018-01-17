@@ -32,4 +32,43 @@ public class AdviceController extends BaseController {
         }
         return obj;
     }
+
+    /**
+     * 获取单个征集信息
+     * @param igAdviceCollectionId
+     * @return
+     */
+    @GetMapping("/collection/get")
+    public ReturnObj getById(Integer igAdviceCollectionId){
+        ReturnObj obj = new ReturnObj();
+        try{
+            obj.setData(igAdviceService.getById(igAdviceCollectionId));
+            obj.setReturnCode(ReturnCode.SUCCESS);
+        }catch (Exception e){
+            logger.error(e.getMessage(), e);
+            obj.setReturnCode(ReturnCode.FAIL);
+            obj.setMsg("获取失败！");
+        }
+        return obj;
+    }
+
+    /**
+     * 获取意见记录
+     * @param igAdviceCollectionId
+     * @return
+     */
+    @GetMapping("/getMemberAdviceById")
+    public ReturnObj getMemberAdviceById(Integer igAdviceCollectionId){
+        ReturnObj obj = new ReturnObj();
+        try{
+            Integer igMemberId = getCurrentMember().getIgMember().getIgMemberId();
+            obj.setData(igAdviceService.getByMemberIdAndCollectionId(igMemberId, igAdviceCollectionId));
+            obj.setReturnCode(ReturnCode.SUCCESS);
+        }catch (Exception e){
+            logger.error(e.getMessage(), e);
+            obj.setReturnCode(ReturnCode.FAIL);
+            obj.setMsg("获取失败！");
+        }
+        return obj;
+    }
 }

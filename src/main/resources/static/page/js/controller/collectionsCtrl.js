@@ -1,4 +1,4 @@
-memberApp.controller('collectionsCtrl', ['$rootScope', '$scope', '$http', function($rootScope, $scope, $http){
+memberApp.controller('collectionsCtrl', ['$routeParams', '$rootScope', '$scope', '$http', function($routeParams, $rootScope, $scope, $http){
     function getCollections(){
         $http.get($rootScope.contextPath + '/advice/collection/list').then(function(result){
            var data = result.data;

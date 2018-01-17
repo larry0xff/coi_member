@@ -21,6 +21,12 @@ memberApp.config(function ($routeProvider, $locationProvider) {
             templateUrl: 'view/collections.html',
             controller: 'collectionsCtrl'
         }
+    ).when(
+        '/collection/:id',
+        {
+            templateUrl: 'view/collection.html',
+            controller: 'collectionCtrl'
+        }
     ).otherwise(
         {
             redirectTo: '/home'

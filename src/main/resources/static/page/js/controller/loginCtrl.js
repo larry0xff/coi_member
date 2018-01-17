@@ -14,7 +14,7 @@ memberApp.controller('loginCtrl', ['$scope', '$rootScope', '$http', '$cookieStor
             }else{
                 $scope.loading = false;
                 $cookieStore.put('realname', data.data.realname);
-                $cookieStore.put('memeberId', data.data.igMemberId);
+                $cookieStore.put('memberId', data.data.igMemberId);
                 $rootScope.realname = $cookieStore.get('realname');
                 $scope.closeModal();
             }

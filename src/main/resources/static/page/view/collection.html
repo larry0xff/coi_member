@@ -1,0 +1,28 @@
+<ol class="am-breadcrumb">
+    <li><a href="#/home" class="am-icon-home">首页</a></li>
+    <li><a href="#/collections">征集列表</a></li>
+    <li class="am-active">征集详情</li>
+</ol>
+
+<article class="am-article">
+    <div class="am-article-hd">
+        <h1 class="am-article-title">{{collectionItem.subject + (collectionItem.status == 1 ? '':(collectionItem.status == 2 ? '(已截止，待处理)': '已完成'))}}</span></h1>
+        <p class="am-article-meta">{{collectionItem.orgName}}<span class="am-fr">开始时间：{{collectionItem.createTime}}</span></p>
+    </div>
+    <h2>截止时间</h2>
+    <div class="am-article-bd">
+        <p class="am-article-lead">{{collectionItem.deadline}}<span ng-if="collectionItem.status == 1"> （距今还有{{(collectionItem.dayOut % 24).toFixed(0) <= 12 ?(collectionItem.dayOut / 24).toFixed(0):(collectionItem.dayOut / 24).toFixed(0)-1}}天 {{(collectionItem.dayOut % 24).toFixed(0)}}个小时）</span></p>
+    </div>
+    <h2>附件下载</h2>
+    <div class="am-article-bd">
+        <p class="am-article-lead">
+            <span ng-if="collectionItem.attachmentUrl">征集附件：<a ng-href="{{contextPath + '/file/download?filename=' + collectionItem.attachmentUrl + '&showname=' + (collectionItem.subject + collectionItem.attachmentUrl.substring(collectionItem.attachmentUrl.indexOf('.')))}}">点击下载</a><br></span>
+            <span ng-if="collectionItem.resultAttachmentUrl">征集结果：<a ng-href="{{contextPath + '/file/download?filename=' + collectionItem.resultAttachmentUrl + '&showname=结果附件：' + (collectionItem.subject + collectionItem.resultAttachmentUrl.substring(collectionItem.resultAttachmentUrl.indexOf('.')))}}">点击下载</a><br></span>
+            <span class="am-text-danger">提示：详情请下载征集附件查看</span>
+        </p>
+    </div>
+    <h2>内容简介</h2>
+    <div class="am-article-bd">
+        <p class="am-article-lead" ng-bind="collectionItem.content"></p>
+    </div>
+</article>
