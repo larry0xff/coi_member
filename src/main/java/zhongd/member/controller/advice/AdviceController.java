@@ -4,11 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import zhongd.coiplatform.entity.DTO.advice.IgAdviceCollectionDTO;
-import zhongd.coiplatform.entity.ReturnObj;
-import zhongd.coiplatform.service.advice.IgAdviceService;
-import zhongd.coiplatform.utils.constant.ReturnCode;
 import zhongd.member.controller.BaseController;
+import zhongd.member.entity.DTO.advice.IgAdviceCollectionDTO;
+import zhongd.member.entity.ReturnObj;
+import zhongd.member.service.advice.IgAdviceService;
+import zhongd.member.utils.constant.ReturnCode;
 
 /**
  * @author xiezd 2018-01-06 17:30

@@ -3,7 +3,7 @@ package zhongd.member.controller;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
-import zhongd.coiplatform.entity.DTO.member.IgMemberLoginDTO;
+import zhongd.member.entity.DTO.member.IgMemberLoginDTO;
 
 /**
  * @author xiezd 2018-01-06 11:06

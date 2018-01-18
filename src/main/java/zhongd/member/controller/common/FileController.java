@@ -9,11 +9,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import zhongd.coiplatform.controller.BaseController;
-import zhongd.coiplatform.entity.ReturnObj;
-import zhongd.coiplatform.service.common.FileService;
-import zhongd.coiplatform.utils.constant.FileTypeConstant;
-import zhongd.coiplatform.utils.constant.ReturnCode;
+import zhongd.member.controller.BaseController;
+import zhongd.member.entity.ReturnObj;
+import zhongd.member.service.common.FileService;
+import zhongd.member.utils.constant.FileTypeConstant;
+import zhongd.member.utils.constant.ReturnCode;
 
 import java.io.File;
 
@@ -25,7 +25,7 @@ import java.io.File;
 @Controller
 @RequestMapping(value = "/file")
 @ResponseBody
-public class FileController extends BaseController{
+public class FileController extends BaseController {
 
     @Autowired
     FileService fileService;

@@ -3,7 +3,7 @@ package zhongd.member.config.shiro;
 import org.apache.shiro.web.servlet.ShiroHttpServletRequest;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.apache.shiro.web.util.WebUtils;
-import zhongd.coiplatform.config.CorsConfig;
+import zhongd.member.config.CorsConfig;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;

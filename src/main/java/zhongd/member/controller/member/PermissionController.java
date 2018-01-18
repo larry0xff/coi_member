@@ -4,11 +4,11 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import zhongd.coiplatform.controller.BaseController;
-import zhongd.coiplatform.entity.ReturnObj;
-import zhongd.coiplatform.service.member.IgMemberService;
-import zhongd.coiplatform.utils.ImageUtil;
-import zhongd.coiplatform.utils.constant.ReturnCode;
+import zhongd.member.controller.BaseController;
+import zhongd.member.entity.ReturnObj;
+import zhongd.member.service.member.IgMemberService;
+import zhongd.member.utils.ImageUtil;
+import zhongd.member.utils.constant.ReturnCode;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletOutputStream;

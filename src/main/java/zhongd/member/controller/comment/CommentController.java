@@ -2,11 +2,11 @@ package zhongd.member.controller.comment;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import zhongd.coiplatform.entity.DO.comment.IgComment;
-import zhongd.coiplatform.entity.ReturnObj;
-import zhongd.coiplatform.service.comment.IgCommentService;
-import zhongd.coiplatform.utils.constant.ReturnCode;
 import zhongd.member.controller.BaseController;
+import zhongd.member.entity.DO.comment.IgComment;
+import zhongd.member.entity.ReturnObj;
+import zhongd.member.service.comment.IgCommentService;
+import zhongd.member.utils.constant.ReturnCode;
 
 /**
  * @author xiezd 2018-01-06 10:19
