@@ -112,7 +112,7 @@
 		<profile>
 			<id>window</id>
 			<properties>
-				<npm>npm.cmd</npm>
+				<npm>npm</npm>
 			</properties>
 
 			<activation>
