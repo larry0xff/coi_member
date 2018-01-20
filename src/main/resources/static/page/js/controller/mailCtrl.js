@@ -1,11 +1,13 @@
-memberApp.controller('mailCtrl', ['$scope','$rootScope','$http','$routeParams', function($scope, $rootScope, $http, $routeParams){
+memberApp.controller('mailCtrl', ['$scope','$rootScope','$http','$interval','$routeParams', function($scope, $rootScope, $http, $interval, $routeParams){
     (function(){
         $scope.mail = {toOrgId: $routeParams.orgId};
         $scope.orgName = $routeParams.orgName;
-        $scope.sendSuccess = false;
+        $scope.sended = false;
+        $scope.process = 0;
     })();
 
     $scope.send = function(){
+        $scope.sended = true;
         $http.post($rootScope.contextPath + '/mail/send', $scope.mail).then(function(result){
             var data = result.data;
             console.log(data);

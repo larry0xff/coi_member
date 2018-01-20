@@ -24,3 +24,4 @@ nbdist/
 
 ### 前端npm包文件夹屏蔽 ###
 node_modules/
+src/main/resources/static/page/js/config/app_config\.js

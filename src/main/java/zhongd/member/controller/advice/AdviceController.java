@@ -2,6 +2,7 @@ package zhongd.member.controller.advice;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import zhongd.member.controller.BaseController;
@@ -68,6 +69,20 @@ public class AdviceController extends BaseController {
             logger.error(e.getMessage(), e);
             obj.setReturnCode(ReturnCode.FAIL);
             obj.setMsg("获取失败！");
+        }
+        return obj;
+    }
+
+    @PostMapping("/save")
+    public ReturnObj save(String content, Integer igAdviceCollectionId){
+        ReturnObj obj = new ReturnObj();
+        try{
+            Integer memberId = getCurrentMember().getIgMember().getIgMemberId();
+            obj.setData(igAdviceService.saveRecord(content, igAdviceCollectionId, memberId));
+            obj.setReturnCode(ReturnCode.SUCCESS);
+        } catch (Exception e){
+            logger.error(e.getMessage(), e);
+            obj.setReturnCode(ReturnCode.FAIL);
         }
         return obj;
     }

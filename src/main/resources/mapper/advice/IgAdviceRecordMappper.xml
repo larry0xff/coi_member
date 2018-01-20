@@ -41,7 +41,7 @@
         FROM <include refid="BaseTable"/>
         LEFT JOIN ig_member m ON (ar.create_by = m.ig_member_id)
         LEFT JOIN ig_advice_collection ac ON(ar.ig_advice_collection_id = ac.ig_advice_collection_id)
-        WHERE ar.ig_advice_collection_id = #{arg0}
-        AND ar.create_by = #{arg1}
+        WHERE ar.create_by = #{arg0}
+        AND ar.ig_advice_collection_id = #{arg1}
     </select>
 </mapper>

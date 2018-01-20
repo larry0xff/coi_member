@@ -27,4 +27,6 @@ public interface IgAdviceService {
     IgAdviceCollectionDTO getById(Integer igAdviceCollectionId);
 
     IgAdviceRecordDTO getByMemberIdAndCollectionId(Integer igMemberId, Integer igAdviceCollectionId);
+
+    int saveRecord(String content, Integer igAdviceCollectionId, Integer memberId);
 }

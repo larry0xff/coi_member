@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import zhongd.member.dao.advice.IgAdviceCollectionMapper;
 import zhongd.member.dao.advice.IgAdviceRecordMapper;
 import zhongd.member.entity.DO.advice.IgAdviceCollection;
+import zhongd.member.entity.DO.advice.IgAdviceRecord;
 import zhongd.member.entity.DTO.advice.IgAdviceCollectionDTO;
 import zhongd.member.entity.DTO.advice.IgAdviceRecordDTO;
 import zhongd.member.entity.DTO.user.IgUserLoginDTO;
@@ -83,5 +84,15 @@ public class IgAdviceServiceImpl implements IgAdviceService {
     @Override
     public IgAdviceRecordDTO getByMemberIdAndCollectionId(Integer igMemberId, Integer igAdviceCollectionId) {
         return igAdviceRecordMapper.selectByMemberIdAndCollectionId(igMemberId, igAdviceCollectionId);
+    }
+
+    @Override
+    public int saveRecord(String content, Integer igAdviceCollectionId, Integer memberId) {
+        IgAdviceRecord record = new IgAdviceRecord();
+        record.setContent(content);
+        record.setIgAdviceCollectionId(igAdviceCollectionId);
+        record.setCreateBy(memberId);
+        record.setCreateTime(new Date());
+        return igAdviceRecordMapper.insertSelective(record);
     }
 }

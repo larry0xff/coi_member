@@ -25,4 +25,15 @@
     <div class="am-article-bd">
         <p class="am-article-lead" ng-bind="collectionItem.content"></p>
     </div>
+    <div ng-show="myAdvice != null">
+        <h2>我的意见</h2>
+        <div class="am-article-bd">
+            <p class="am-article-lead">{{myAdvice}}</p>
+        </div>
+    </div>
 </article>
+<div ng-show="myAdvice == null">
+    <h2>我的意见</h2>
+    <textarea style="width: 100%" rows="10" placeholder="  请输入你的意见内容" ng-model="content"></textarea>
+    <button type="button" class="am-btn am-btn-primary am-round am-center am-margin-top-lg" ng-click="addAdvice()">写好了，提交吧！</button>
+</div>
