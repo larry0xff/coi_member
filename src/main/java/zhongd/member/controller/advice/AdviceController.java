@@ -73,6 +73,12 @@ public class AdviceController extends BaseController {
         return obj;
     }
 
+    /**
+     * 保存用户征集意见
+     * @param content 内容
+     * @param igAdviceCollectionId 征集id
+     * @return
+     */
     @PostMapping("/save")
     public ReturnObj save(String content, Integer igAdviceCollectionId){
         ReturnObj obj = new ReturnObj();

@@ -33,6 +33,12 @@ memberApp.config(function ($routeProvider, $locationProvider) {
             templateUrl: 'view/sendmail.html',
             controller: 'mailCtrl'
         }
+    ).when(
+        '/profile',
+        {
+            templateUrl: 'view/profile.html',
+            controller: 'profileCtrl'
+        }
     ).otherwise(
         {
             redirectTo: '/home'
