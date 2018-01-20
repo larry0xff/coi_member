@@ -1,6 +1,7 @@
 package zhongd.member.service.mailbox;
 
 import zhongd.member.entity.DO.mailbox.IgMail;
+import zhongd.member.entity.DTO.mailbox.MailDTO;
 
 import java.util.List;
 
@@ -10,9 +11,6 @@ import java.util.List;
  * @Description
  */
 public interface IgMailboxService {
-    List<IgMail> list(Integer igOrgId, String status);
 
-    boolean reply(String reply, Integer igMailId, Integer igUserId);
-
-    boolean changeReadStatus(Integer igMailId, String isRead);
+    int save(MailDTO mail, Integer igMemberId);
 }

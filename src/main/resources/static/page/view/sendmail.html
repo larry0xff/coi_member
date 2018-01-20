@@ -1,0 +1,26 @@
+<ol class="am-breadcrumb">
+    <li><a href="#/home" class="am-icon-home">首页</a></li>
+    <li class="am-active">写信</li>
+</ol>
+<section ng-if="!sendSuccess">
+    <form class="am-form">
+        <div class="am-u-md-2 am-form-group am-u-sm-12">
+            <label for="org">收件人</label>
+            <input type="text" class="" id="org" ng-model="orgName" disabled>
+        </div>
+        <div class="am-form-group am-u-md-10 am-u-sm-12">
+            <label for="mail-title">主题</label>
+            <input type="text" class="" id="mail-title" placeholder="请输入邮件主题" ng-model="mail.title">
+        </div>
+        <div class="am-form-group am-u-sm-12">
+            <label for="mail-content">内容</label>
+            <textarea class="" rows="20" id="mail-content" placeholder="  请输入邮件内容" ng-model="mail.content"></textarea>
+        </div>
+    </form>
+</section>
+<section ng-if="!sendSuccess">
+    <button type="button" class="am-btn am-btn-primary am-round am-center" ng-click="send()">写好了，发送信件吧！</button>
+</section>
+<section ng-if="sendSuccess">
+    发送成功 <a href="#/home">返回首页</a>
+</section>

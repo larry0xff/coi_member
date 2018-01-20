@@ -32,7 +32,7 @@
             <div class="am-list-news-bd">
                 <ul class="am-list">
                     <li class="am-g am-list-item-desced" ng-repeat="org in pagedata.orgList.list">
-                        <small>{{org.name}}<a href class="am-fr am-margin-right-sm">发送信件</a></small>
+                        <small>{{org.name}}<a href="#/sendmail/{{org.igOrgId}}/{{org.name}}" class="am-fr am-margin-right-sm">发送信件</a></small>
                     </li>
                 </ul>
             </div>

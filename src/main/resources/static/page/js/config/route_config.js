@@ -27,6 +27,12 @@ memberApp.config(function ($routeProvider, $locationProvider) {
             templateUrl: 'view/collection.html',
             controller: 'collectionCtrl'
         }
+    ).when(
+        '/sendmail/:orgId/:orgName',
+        {
+            templateUrl: 'view/sendmail.html',
+            controller: 'mailCtrl'
+        }
     ).otherwise(
         {
             redirectTo: '/home'

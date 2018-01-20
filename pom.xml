@@ -108,7 +108,25 @@
 			<version>2.6</version>
 		</dependency>
 	</dependencies>
+	<profiles>    <!--考虑到window 和linux环境 npm命令格式的问题，使用maven的profile实现动态指定命令-->
+		<profile>
+			<id>window</id>
+			<properties>
+				<npm>npm.cmd</npm>
+			</properties>
 
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+
+		</profile>
+		<profile>
+			<id>linux</id>
+			<properties>
+				<npm>npm</npm>
+			</properties>
+		</profile>
+	</profiles>
 	<build>
 		<plugins>
 			<plugin>
@@ -122,6 +140,41 @@
 				<configuration>
 					<skip>true</skip>
 				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>1.5.1.RELEASE</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<executions>
+
+					<execution>
+						<id>exec-npm-install</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>${npm}</executable>
+							<arguments>
+								<argument>install</argument>
+							</arguments>
+							<workingDirectory>${basedir}/src/main/resources/static/page</workingDirectory>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

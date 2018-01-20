@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import zhongd.member.dao.mailbox.IgMailMapper;
 import zhongd.member.entity.DO.mailbox.IgMail;
+import zhongd.member.entity.DTO.mailbox.MailDTO;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -21,32 +22,13 @@ public class IgMailboxServiceImpl implements IgMailboxService {
     IgMailMapper igMailMapper;
 
     @Override
-    public List<IgMail> list(Integer igOrgId, String status) {
-        Map<String, Object> paramMap = new HashMap<>();
-        if(igOrgId != 1){
-            paramMap.put("igOrgId", igOrgId);
-        }
-        //筛选未回复的
-        if(status.equals("waitting")){
-            paramMap.put("status", "waitting");
-        }
-        return igMailMapper.list(paramMap);
-    }
-
-    @Override
-    public boolean reply(String reply, Integer igMailId, Integer igUserId) {
-        IgMail updateObj = igMailMapper.selectByPrimaryKey(igMailId);
-        updateObj.setIgMailId(igMailId);
-        updateObj.setReply(reply);
-        updateObj.setUpdateBy(igUserId);
-        updateObj.setUpdateTime(new Date());
-        return igMailMapper.updateByPrimaryKeySelective(updateObj) > 0;
-    }
-
-    @Override
-    public boolean changeReadStatus(Integer igMailId, String isRead) {
-        IgMail updateObj = igMailMapper.selectByPrimaryKey(igMailId);
-        updateObj.setIsRead(isRead);
-        return igMailMapper.updateByPrimaryKeySelective(updateObj) > 0;
+    public int save(MailDTO mail, Integer igMemberId) {
+        IgMail mailDO = new IgMail();
+        mailDO.setContent(mail.getContent());
+        mailDO.setIgOrgId(mail.getToOrgId());
+        mailDO.setTitle(mail.getTitle());
+        mailDO.setCreateBy(igMemberId);
+        mailDO.setCreateTime(new Date());
+        return igMailMapper.insertSelective(mailDO);
     }
 }
