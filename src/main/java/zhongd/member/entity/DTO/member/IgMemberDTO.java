@@ -12,15 +12,14 @@ public class IgMemberDTO {
     private String email;
     private String tel;
     private String gender;
-    private Integer igOrgId;
-    private String password;
+    private String orgName;
 
-    public String getPassword() {
-        return password;
+    public String getOrgName() {
+        return orgName;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setOrgName(String orgName) {
+        this.orgName = orgName;
     }
 
     public Integer getIgMemberId() {
@@ -71,11 +70,4 @@ public class IgMemberDTO {
         this.gender = gender;
     }
 
-    public Integer getIgOrgId() {
-        return igOrgId;
-    }
-
-    public void setIgOrgId(Integer igOrgId) {
-        this.igOrgId = igOrgId;
-    }
 }

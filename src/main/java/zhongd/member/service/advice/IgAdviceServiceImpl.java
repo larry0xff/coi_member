@@ -62,11 +62,6 @@ public class IgAdviceServiceImpl implements IgAdviceService {
     }
 
     @Override
-    public List<IgAdviceCollection> getAllCollectingCollection(){
-        return igAdviceCollectionMapper.getAllCollectingCollection();
-    }
-
-    @Override
     public List<IgAdviceRecordDTO> getRecordsByCollectionId(Integer igAdviceCollectionId) {
         return igAdviceRecordMapper.selectByCollectionId(igAdviceCollectionId);
     }

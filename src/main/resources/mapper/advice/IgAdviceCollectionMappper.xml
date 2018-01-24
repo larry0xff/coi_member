@@ -42,10 +42,6 @@
         ORDER BY status ASC, ac.deadline ASC
     </select>
 
-    <select id="getAllCollectingCollection" resultMap="BaseResultMap">
-        SELECT * FROM ig_advice_collection WHERE status = 1
-    </select>
-
     <select id="getAdviceCollectionById" parameterType="Integer" resultType="zhongd.member.entity.DTO.advice.IgAdviceCollectionDTO">
         SELECT ig_advice_collection_id as igAdviceCollectionId,subject,content,
         date_format(deadline, '%Y-%m-%d') as deadline, status, attachment_url as attachmentUrl, result_attachment_url as resultAttachmentUrl, advices_attachment_url as advicesAttachmentUrl,
@@ -57,5 +53,16 @@
         LEFT JOIN ig_user u2 ON (ac.update_by = u2.ig_user_id)
         WHERE ig_advice_collection_id = #{igAdviceCollectionId}
         ORDER BY status ASC, ac.deadline ASC
+    </select>
+    <select id="getMemberAdviceCollection" parameterType="Integer" resultType="zhongd.member.entity.DTO.advice.IgAdviceCollectionDTO">
+        SELECT ac.ig_advice_collection_id as igAdviceCollectionId,subject,
+        date_format(deadline, '%Y-%m-%d') as deadline,
+        date_format(ac.create_time, '%Y-%m-%d') as createTime,date_format(ac.update_time, '%Y-%m-%d') as updateTime,
+        o.name as orgName, TIMESTAMPDIFF(HOUR,NOW(),deadline) AS dayOut
+        FROM ig_advice_collection ac
+        LEFT JOIN ig_org o ON (o.ig_org_id = ac.ig_org_id)
+        WHERE ig_advice_collection_id IN (
+          SELECT ig_advice_collection_id FROM ig_advice_record WHERE create_by = #{igMemberId}
+        )
     </select>
 </mapper>

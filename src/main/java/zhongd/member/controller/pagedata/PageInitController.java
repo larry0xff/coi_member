@@ -8,6 +8,7 @@ import zhongd.member.controller.BaseController;
 import zhongd.member.entity.DTO.advice.IgAdviceCollectionDTO;
 import zhongd.member.entity.ReturnObj;
 import zhongd.member.service.advice.IgAdviceService;
+import zhongd.member.service.member.IgMemberService;
 import zhongd.member.service.org.IgOrgService;
 import zhongd.member.utils.constant.ReturnCode;
 
@@ -24,6 +25,8 @@ public class PageInitController extends BaseController {
     private IgAdviceService igAdviceService;
     @Autowired
     private IgOrgService igOrgService;
+    @Autowired
+    private IgMemberService igMemberService;
     @GetMapping("/home")
     public ReturnObj homeData(){
         ReturnObj obj = new ReturnObj();
@@ -39,5 +42,18 @@ public class PageInitController extends BaseController {
             obj.setReturnCode(ReturnCode.FAIL);
         }
         return obj;
+    }
+
+    @GetMapping("/profile")
+    public ReturnObj profileData(){
+        ReturnObj obj = new ReturnObj();
+        try {
+            obj.setData(igMemberService.getById(getCurrentMember().getIgMember().getIgMemberId()));
+            obj.setReturnCode(ReturnCode.SUCCESS);
+        } catch (Exception e){
+            logger.error(e.getMessage(), e);
+            obj.setReturnCode(ReturnCode.FAIL);
+        }
+        return  obj;
     }
 }

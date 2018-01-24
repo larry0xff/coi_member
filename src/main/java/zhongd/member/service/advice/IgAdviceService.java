@@ -18,8 +18,6 @@ public interface IgAdviceService {
 
     List<IgAdviceCollectionDTO> list(IgAdviceCollectionDTO paramMap);
 
-    List<IgAdviceCollection> getAllCollectingCollection();
-
     List<IgAdviceRecordDTO> getRecordsByCollectionId(Integer igAdviceCollectionId);
 
     Integer baseSave(IgAdviceCollection collection);
