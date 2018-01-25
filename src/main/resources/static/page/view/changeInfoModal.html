@@ -1,0 +1,25 @@
+<div class="am-modal am-modal-no-btn" tabindex="-1" id="changeInfoModal" ng-controller="profileCtrl">
+    <div class="am-modal-bd" ng-show="loading">
+        <span class="am-icon-spinner am-icon-spin"></span>
+    </div>
+    <div class="am-modal-dialog" ng-show="!loading">
+        <div id="title" class="am-modal-hd am-margin-bottom-sm am-margin-top-lg">
+            <a href="javascript: void(0)" class="am-close am-close-spin" ng-click="closeChangeInfoModal()">&times;</a>
+        </div>
+        <div class="am-modal-bd am-g">
+            <div class="am-u-sm-2">&nbsp;</div>
+            <form class="am-u-sm-8 am-form am-form-horizontal">
+                <label for="newEmail">新邮箱</label>
+                <input id="newEmail" type="text" class="am-form-field  am-margin-bottom-sm" placeholder="&nbsp;新邮箱" ng-model="pageData.profile.email"/>
+                <label for="newTel">新联系电话</label>
+                <input id="newTel" type="text" class="am-form-field  am-margin-bottom-sm" placeholder="&nbsp;新联系电话" ng-model="pageData.profile.tel"/>
+                <button type="button" class="am-btn am-btn-primary am-btn-block am-margin-top-sm" ng-click="changeInfo()">修改</button>
+                <div class="am-alert am-alert-warning" ng-if="errMsg">
+                    {{errMsg}}
+                </div>
+            </form>
+            <div class="am-u-sm-2">&nbsp;</div>
+        </div>
+    </div>
+</div>
+</div>

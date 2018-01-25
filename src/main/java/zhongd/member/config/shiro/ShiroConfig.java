@@ -26,7 +26,7 @@ public class ShiroConfig {
 //		filterChainMap.put("/**", "authc");
 		filterChainMap.put("/page/user/**", "authc");
 		filterChainMap.put("/page/index/**", "authc");
-		factoryBean.setLoginUrl("/page/login/login.html");
+		factoryBean.setLoginUrl("/page/login/loginModal.html");
 		factoryBean.setUnauthorizedUrl("/403");
 		factoryBean.setFilterChainDefinitionMap(filterChainMap);
 		return factoryBean;

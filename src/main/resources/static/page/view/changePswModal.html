@@ -1,0 +1,24 @@
+<div class="am-modal am-modal-no-btn" tabindex="-1" id="changePswModal" ng-controller="profileCtrl">
+    <div class="am-modal-bd" ng-show="loading">
+        <span class="am-icon-spinner am-icon-spin"></span>
+    </div>
+    <div class="am-modal-dialog" ng-show="!loading">
+        <div id="title" class="am-modal-hd am-margin-bottom-sm am-margin-top-lg"><i class="am-icon-key"></i>&nbsp;修改密码
+            <a href="javascript: void(0)" class="am-close am-close-spin" ng-click="closeChangePswModal()">&times;</a>
+        </div>
+        <div class="am-modal-bd am-g">
+            <div class="am-u-sm-2">&nbsp;</div>
+            <form class="am-u-sm-8 am-form am-form-horizontal">
+                <input type="password" class="am-form-field  am-margin-bottom-sm" placeholder="&nbsp;旧密码" ng-model="oldPsw"/>
+                <input type="password" class="am-form-field  am-margin-bottom-sm" placeholder="&nbsp;新密码" ng-model="newPsw"/>
+                <input type="password" class="am-form-field  am-margin-bottom-sm" placeholder="&nbsp;重复输入" ng-model="newPsw2"/>
+                <button type="button" class="am-btn am-btn-primary am-btn-block am-margin-top-sm" ng-click="changePsw()">修改</button>
+                <div class="am-alert am-alert-warning" ng-if="errMsg">
+                    {{errMsg}}
+                </div>
+            </form>
+            <div class="am-u-sm-2">&nbsp;</div>
+        </div>
+    </div>
+</div>
+</div>

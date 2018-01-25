@@ -13,6 +13,15 @@ public class IgMemberDTO {
     private String tel;
     private String gender;
     private String orgName;
+    private String createTime;
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
 
     public String getOrgName() {
         return orgName;

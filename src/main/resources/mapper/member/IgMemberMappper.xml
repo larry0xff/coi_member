@@ -46,7 +46,10 @@
         )
     </select>
     <!--dataTables-->
-    <select id="selectByDateTable" >
-        select <include refid="BaseColumns" />
+    <select id="selectOneDTO" resultType="zhongd.member.entity.DTO.member.IgMemberDTO" parameterType="Integer">
+        select ig_member_id as igMemberId,username,realname,tel,email,gender,o.name as orgName,date_format(m.create_time, '%Y-%m-%d %H:%I:%S') as createTime
+        FROM ig_member m
+        LEFT JOIN ig_org o ON (m.ig_org_id = o .ig_org_id)
+        WHERE m.ig_member_id = #{igMemberId}
     </select>
 </mapper>

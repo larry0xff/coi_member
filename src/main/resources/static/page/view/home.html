@@ -51,7 +51,7 @@
             <div class="am-list-news-bd">
                 <ul class="am-list">
                     <li class="am-g am-list-item-desced" ng-repeat="x in pagedata.collections | limitTo: 8">
-                        <a href="http://www.douban.com/online/11614662/"
+                        <a href="#/collection/{{x.igAdviceCollectionId}}"
                            class="am-list-item-hd ">{{x.subject}}</a>
                         <div class="am-list-item-text">
                             {{x.content}}

@@ -27,6 +27,11 @@ public class PageInitController extends BaseController {
     private IgOrgService igOrgService;
     @Autowired
     private IgMemberService igMemberService;
+
+    /**
+     * 主页数据
+     * @return
+     */
     @GetMapping("/home")
     public ReturnObj homeData(){
         ReturnObj obj = new ReturnObj();
@@ -44,11 +49,15 @@ public class PageInitController extends BaseController {
         return obj;
     }
 
+    /**
+     * 个人信息数据
+     * @return
+     */
     @GetMapping("/profile")
     public ReturnObj profileData(){
         ReturnObj obj = new ReturnObj();
         try {
-            obj.setData(igMemberService.getById(getCurrentMember().getIgMember().getIgMemberId()));
+            obj.setData(igMemberService.getInfoById(getCurrentMember().getIgMember().getIgMemberId()));
             obj.setReturnCode(ReturnCode.SUCCESS);
         } catch (Exception e){
             logger.error(e.getMessage(), e);

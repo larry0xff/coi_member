@@ -14,7 +14,9 @@ import zhongd.member.entity.DTO.member.IgMemberDTO;
 import zhongd.member.entity.DTO.member.IgMemberLoginDTO;
 import zhongd.member.entity.ReturnObj;
 import zhongd.member.utils.ConvertTools;
+import zhongd.member.utils.DateUtil;
 import zhongd.member.utils.PasswordHandler;
+import zhongd.member.utils.StringUtil;
 import zhongd.member.utils.constant.Constant;
 import zhongd.member.utils.constant.ReturnCode;
 
@@ -34,14 +36,6 @@ public class IgMemberServiceImpl implements IgMemberService {
     IgMemberMapper igMemberMapper;
     @Autowired
     IgAdviceCollectionMapper igAdviceCollectionMapper;
-
-    @Override
-    public int resetPassword(Integer igMemberId, String username) {
-        IgMember member = new IgMember();
-        member.setIgMemberId(igMemberId);
-        member.setPassword(PasswordHandler.encodePassword("123456", username, Constant.MD5_STR));
-        return igMemberMapper.updateByPrimaryKeySelective(member);
-    }
 
     @Override
     public ReturnObj login(HttpServletRequest request) {
@@ -81,12 +75,30 @@ public class IgMemberServiceImpl implements IgMemberService {
     }
 
     @Override
-    public Map<String, Object> getById(Integer igMemberId) {
-        IgMemberDTO igMemberDTO = ConvertTools.convert(IgMemberDTO.class,igMemberMapper.selectByPrimaryKey(igMemberId));
+    public Map<String, Object> getInfoById(Integer igMemberId) {
+        IgMemberDTO igMemberDTO = igMemberMapper.selectOneDTO(igMemberId);
         List<IgAdviceCollection> collections = igAdviceCollectionMapper.getMemberAdviceCollection(igMemberId);
         Map<String, Object> data = new HashMap<>();
         data.put("profile", igMemberDTO);
         data.put("collections", collections);
         return data;
+    }
+
+    @Override
+    public int changePassword(IgMember current, String newPsw) {
+        IgMember member = new IgMember();
+        member.setIgMemberId(current.getIgMemberId());
+        member.setPassword(PasswordHandler.encodePassword(newPsw, current.getUsername(), Constant.MD5_STR));
+        return igMemberMapper.updateByPrimaryKeySelective(member);
+    }
+
+    @Override
+    public int updateById(IgMember igMember) {
+        return igMemberMapper.updateByPrimaryKeySelective(igMember);
+    }
+
+    @Override
+    public IgMember getById(Integer igMemberId){
+        return igMemberMapper.selectByPrimaryKey(igMemberId);
     }
 }
