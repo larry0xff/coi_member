@@ -14,4 +14,6 @@ public interface IgCommentService {
     boolean save(IgComment comment, Integer currentMemberId);
 
     boolean agree(Integer igCommentId, String flag);
+
+    int getNotifyCountById(Integer igMemberId);
 }

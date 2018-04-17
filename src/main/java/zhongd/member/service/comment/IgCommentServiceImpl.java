@@ -32,6 +32,8 @@ public class IgCommentServiceImpl implements IgCommentService {
     public boolean save(IgComment comment, Integer currentMemberId) {
         comment.setCreateTime(new Date());
         comment.setCreateBy(currentMemberId);
+        comment.setAgainst(0);
+        comment.setAgree(0);
         if(comment.getReplyId() != null && comment.getReplyId() != 0){
             comment.setIsRead("N");
         }
@@ -48,5 +50,10 @@ public class IgCommentServiceImpl implements IgCommentService {
             comment.setAgainst(comment.getAgainst() + 1);
         }
         return igCommentMapper.updateByPrimaryKeySelective(comment) > 0;
+    }
+
+    @Override
+    public int getNotifyCountById(Integer igMemberId) {
+        return igCommentMapper.getNotifyCountById(igMemberId);
     }
 }

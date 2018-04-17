@@ -8,6 +8,7 @@ import zhongd.member.controller.BaseController;
 import zhongd.member.entity.DTO.advice.IgAdviceCollectionDTO;
 import zhongd.member.entity.ReturnObj;
 import zhongd.member.service.advice.IgAdviceService;
+import zhongd.member.service.comment.IgCommentService;
 import zhongd.member.service.member.IgMemberService;
 import zhongd.member.service.org.IgOrgService;
 import zhongd.member.utils.constant.ReturnCode;
@@ -65,4 +66,5 @@ public class PageInitController extends BaseController {
         }
         return  obj;
     }
+
 }

@@ -17,7 +17,7 @@
         ig_comment c
     </sql>
     <sql id="BaseColumns">
-        ig_comment_id,content,against, agree, reply_id,create_time,create_by,update_by,update_time
+        ig_comment_id,content,is_read, against, agree, reply_id,create_time,create_by,update_by,update_time
     </sql>
 
     <select id="list" parameterType="map" resultType="zhongd.member.entity.DTO.comment.IgCommentDTO">
@@ -30,5 +30,9 @@
         </if>
         ORDER BY c.agree DESC, c.create_time DESC
         LIMIT #{page}, #{pageSize}
+    </select>
+    
+    <select id="getNotifyCountById" parameterType="int" resultType="int">
+        SELECT count(1) FROM ig_comment WHERE reply_id = #{igMemberId} AND is_read = 'N'
     </select>
 </mapper>

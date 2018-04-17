@@ -55,6 +55,7 @@ memberApp.controller('commentsCtrl', ['$scope', '$rootScope', '$http',
                 }else{
                     delete $scope.newComment;
                     delete $scope.commentList;
+                    $scope.page = 1;
                     getCommentList(0);
                 }
             });

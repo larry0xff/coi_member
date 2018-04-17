@@ -7,7 +7,7 @@ spring:
     # 名称
     name: test
     # 数据库链接 设置编码和时区
-    url: jdbc:mysql://120.79.81.123:3306/ig?useUnicode=true&characterEncoding=utf8&serverTimezone=Hongkong
+    url: jdbc:mysql://47.106.74.36:3306/ig?useUnicode=true&characterEncoding=utf8&serverTimezone=Hongkong
     # 用户名
     username: root
     # 密码

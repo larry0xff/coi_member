@@ -84,4 +84,21 @@ public class CommentController extends BaseController {
         }
         return obj;
     }
+
+    /**
+     * 获取未读评论数
+     * @return
+     */
+    @GetMapping("/notifyCount")
+    public ReturnObj notifyCount() {
+        ReturnObj obj = new ReturnObj();
+        try {
+            obj.setData(igCommentService.getNotifyCountById(getCurrentMember().getIgMember().getIgMemberId()));
+            obj.setReturnCode(ReturnCode.SUCCESS);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            obj.setReturnCode(ReturnCode.FAIL);
+        }
+        return obj;
+    }
 }

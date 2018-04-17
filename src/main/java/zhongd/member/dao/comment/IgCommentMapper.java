@@ -14,4 +14,6 @@ import java.util.Map;
 @Mapper
 public interface IgCommentMapper extends BaseMapper<IgComment> {
     List<IgCommentDTO> list(Map<String, Object> paramMap);
+
+    int getNotifyCountById(Integer igMemberId);
 }
