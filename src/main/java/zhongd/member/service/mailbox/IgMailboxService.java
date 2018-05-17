@@ -13,4 +13,6 @@ import java.util.List;
 public interface IgMailboxService {
 
     int save(MailDTO mail, Integer igMemberId);
+
+    List<MailDTO> notifyList(Integer igMemberId);
 }

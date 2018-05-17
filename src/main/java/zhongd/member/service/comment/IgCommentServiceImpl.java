@@ -56,4 +56,9 @@ public class IgCommentServiceImpl implements IgCommentService {
     public int getNotifyCountById(Integer igMemberId) {
         return igCommentMapper.getNotifyCountById(igMemberId);
     }
+
+    @Override
+    public List<IgCommentDTO> notifyList(Integer igMemberId) {
+        return igCommentMapper.notifyList(igMemberId);
+    }
 }

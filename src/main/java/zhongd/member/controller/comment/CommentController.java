@@ -101,4 +101,17 @@ public class CommentController extends BaseController {
         }
         return obj;
     }
+
+    @GetMapping("notifyList")
+    public ReturnObj notifyList() {
+        ReturnObj obj = new ReturnObj();
+        try {
+            obj.setData(igCommentService.notifyList(getCurrentMember().getIgMember().getIgMemberId()));
+            obj.setReturnCode(ReturnCode.SUCCESS);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            obj.setReturnCode(ReturnCode.FAIL);
+        }
+        return obj;
+    }
 }

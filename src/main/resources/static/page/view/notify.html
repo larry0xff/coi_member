@@ -1,0 +1,43 @@
+<ol class="am-breadcrumb">
+    <li><a href="#/home" class="am-icon-home">首页</a></li>
+    <li class="am-active">我的消息</li>
+</ol>
+<div class="am-g">
+    <div data-am-widget="list_news" class="am-list-news am-list-news-default am-u-sm-8" >
+        <!--列表标题-->
+        <div class="am-list-news-hd am-cf">
+            <a href="##" class="">
+                <h2>邮件回复</h2>
+            </a>
+        </div>
+
+        <div class="am-list-news-bd">
+            <ul class="am-list">
+                <li class="am-g am-list-item-dated" ng-repeat="m in mails">
+                    <a href="" ng-href="#/mailDetail/{{$index}}" class="am-list-item-hd ">{{m.title}}</a>
+                    <span class="am-list-date">{{m.updateTime | date:'yyyy-MM-dd HH:mm'}}</span>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <div data-am-widget="list_news" class="am-list-news am-list-news-default am-u-sm-3" >
+        <!--列表标题-->
+        <div class="am-list-news-hd am-cf">
+            <a href="##" class="">
+                <h2>评论回复</h2>
+            </a>
+        </div>
+
+        <div class="am-list-news-bd">
+            <ul class="am-list">
+                <li class="am-g am-list-item-dated" ng-repeat="c in comments">
+                    <a class="am-list-item-hd ">{{c.content}}</a>
+                    <span class="am-list-date">{{c.createBy}}</span>
+                </li>
+
+            </ul>
+        </div>
+
+    </div>
+</div>

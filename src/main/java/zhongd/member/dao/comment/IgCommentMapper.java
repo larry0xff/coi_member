@@ -16,4 +16,6 @@ public interface IgCommentMapper extends BaseMapper<IgComment> {
     List<IgCommentDTO> list(Map<String, Object> paramMap);
 
     int getNotifyCountById(Integer igMemberId);
+
+    List<IgCommentDTO> notifyList(Integer igMemberId);
 }

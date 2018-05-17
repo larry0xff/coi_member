@@ -1,0 +1,22 @@
+<ol class="am-breadcrumb">
+    <li><a href="#/home" class="am-icon-home">首页</a></li>
+    <li><a href="#/notify">消息</a></li>
+    <li class="am-active">邮件详情</li>
+</ol>
+
+<article class="am-article">
+    <div class="am-article-hd">
+        <h1 class="am-article-title">{{temp.title}}</span></h1>
+        <p class="am-article-meta">发送至：{{temp.orgName}}<span class="am-fr">回信时间：{{temp.replyTime | date:'yyyy-MM-dd HH:mm'}}</span></p>
+    </div>
+    <h2>原始信件</h2>
+    <div class="am-article-bd">
+        <p class="am-article-lead">{{temp.createName}}：{{temp.content}}</span></p>
+    </div>
+    <h2>回复详情</h2>
+    <div class="am-article-bd">
+        <p class="am-article-lead">
+            <span>征集附件： {{temp.replyName}}：{{temp.replyContent}}<br></span>
+        </p>
+    </div>
+</article>

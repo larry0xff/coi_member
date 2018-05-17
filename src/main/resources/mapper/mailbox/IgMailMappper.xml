@@ -31,4 +31,14 @@
             AND reply IS NULL
         </if>
     </select>
+
+    <select id="notifyList" resultType="zhongd.member.entity.DTO.mailbox.MailDTO" parameterType="int">
+        SELECT o.name as orgName, mail.title, mail.content, mail.reply as replyContent, is_member_read as isRead,
+        mail.create_time as createTime, mail.update_time as replyTime, u.realname as replyName, m.realname as createName
+        FROM ig_mail mail
+        LEFT JOIN ig_user u ON (mail.update_by = u.ig_user_id)
+        LEFT JOIN ig_member m ON (mail.create_by = m.ig_member_id)
+        LEFT JOIN ig_org o ON (o.ig_org_id = mail.ig_org_id)
+        WHERE mail.create_by = #{igMemberId} AND reply IS NOT NULL;
+    </select>
 </mapper>

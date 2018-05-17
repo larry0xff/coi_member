@@ -16,4 +16,6 @@ public interface IgCommentService {
     boolean agree(Integer igCommentId, String flag);
 
     int getNotifyCountById(Integer igMemberId);
+
+    List<IgCommentDTO> notifyList(Integer igMemberId);
 }

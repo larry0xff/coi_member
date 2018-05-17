@@ -35,4 +35,13 @@
     <select id="getNotifyCountById" parameterType="int" resultType="int">
         SELECT count(1) FROM ig_comment WHERE reply_id = #{igMemberId} AND is_read = 'N'
     </select>
+    
+    <select id="notifyList" parameterType="Integer" resultType="zhongd.member.entity.DTO.comment.IgCommentDTO">
+        SELECT c.create_by as createById, ig_comment_id as igCommentId,content,against, agree, m.realname as createBy,date_format(c.create_time, '%Y-%m-%d %H:%i') as createTime,is_read as isRead
+        FROM <include refid="BaseTable"/>
+        LEFT JOIN ig_member m ON (m.ig_member_id = c.create_by)
+        WHERE 1=1
+        AND c.reply_id = #{igMemberId}
+        ORDER BY c.create_time DESC
+    </select>
 </mapper>

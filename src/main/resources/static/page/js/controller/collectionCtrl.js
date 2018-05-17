@@ -20,6 +20,10 @@ memberApp.controller('collectionCtrl', ['$scope', '$rootScope', '$routeParams','
         });
     }
     $scope.addAdvice = function(){
+        if (!$cookieStore.get("realname")) {
+            alert("请先登录！");
+            return;
+        }
         $http.post($rootScope.contextPath + '/advice/save?igAdviceCollectionId=' + $routeParams.id + "&content=" + $scope.content).then(function(result){
             var data = result.data;
             if(data.returnCode != 200){

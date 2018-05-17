@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 @Configuration
@@ -16,16 +17,11 @@ public class ShiroConfig {
 		ShiroFilterFactoryBean factoryBean = new ShiroFilterFactoryBean();
 		factoryBean.setSecurityManager(securityManager);
 		
-		Map<String, String> filterChainMap = new HashMap<String, String>();
+		Map<String, String> filterChainMap = new LinkedHashMap<String, String>();
 		// anon表示可以匿名访问的url
 		filterChainMap.put("/login", "anon");
 		filterChainMap.put("/page/login/**", "anon");
-		// 注销url
-		filterChainMap.put("/logout", "logout");
-		// 需要授权访问的链接
-//		filterChainMap.put("/**", "authc");
-		filterChainMap.put("/page/user/**", "authc");
-		filterChainMap.put("/page/index/**", "authc");
+		filterChainMap.put("/advice/save", "authc");
 		factoryBean.setLoginUrl("/page/login/loginModal.html");
 		factoryBean.setUnauthorizedUrl("/403");
 		factoryBean.setFilterChainDefinitionMap(filterChainMap);

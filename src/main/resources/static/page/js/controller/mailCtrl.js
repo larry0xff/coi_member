@@ -1,4 +1,4 @@
-memberApp.controller('mailCtrl', ['$scope','$rootScope','$http','$interval','$routeParams', function($scope, $rootScope, $http, $interval, $routeParams){
+memberApp.controller('mailCtrl', ['$scope','$rootScope','$http','$interval','$routeParams','$cookieStore', function($scope, $rootScope, $http, $interval, $routeParams,$cookieStore){
     (function(){
         $scope.mail = {toOrgId: $routeParams.orgId};
         $scope.orgName = $routeParams.orgName;
@@ -7,6 +7,10 @@ memberApp.controller('mailCtrl', ['$scope','$rootScope','$http','$interval','$ro
     })();
 
     $scope.send = function(){
+        if (!$cookieStore.get("realname")) {
+            alert("请先登录！");
+            return;
+        }
         $scope.sended = true;
         $http.post($rootScope.contextPath + '/mail/send', $scope.mail).then(function(result){
             var data = result.data;

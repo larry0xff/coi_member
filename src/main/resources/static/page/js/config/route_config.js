@@ -39,6 +39,18 @@ memberApp.config(function ($routeProvider, $locationProvider) {
             templateUrl: 'view/profile.html',
             controller: 'profileCtrl'
         }
+    ).when(
+        '/notify',
+        {
+            templateUrl: 'view/notify.html',
+            controller: 'notifyCtrl'
+        }
+    ).when(
+        '/mailDetail/:index',
+        {
+            templateUrl: 'view/mailDetail.html',
+            controller: 'mailDetailCtrl'
+        }
     ).otherwise(
         {
             redirectTo: '/home'

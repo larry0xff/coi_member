@@ -9,6 +9,7 @@ import zhongd.member.entity.DTO.advice.IgAdviceCollectionDTO;
 import zhongd.member.entity.ReturnObj;
 import zhongd.member.service.advice.IgAdviceService;
 import zhongd.member.service.comment.IgCommentService;
+import zhongd.member.service.config.IgConfigService;
 import zhongd.member.service.member.IgMemberService;
 import zhongd.member.service.org.IgOrgService;
 import zhongd.member.utils.constant.ReturnCode;
@@ -28,6 +29,8 @@ public class PageInitController extends BaseController {
     private IgOrgService igOrgService;
     @Autowired
     private IgMemberService igMemberService;
+    @Autowired
+    private IgConfigService igConfigService;
 
     /**
      * 主页数据
@@ -59,6 +62,20 @@ public class PageInitController extends BaseController {
         ReturnObj obj = new ReturnObj();
         try {
             obj.setData(igMemberService.getInfoById(getCurrentMember().getIgMember().getIgMemberId()));
+            obj.setReturnCode(ReturnCode.SUCCESS);
+        } catch (Exception e){
+            logger.error(e.getMessage(), e);
+            obj.setReturnCode(ReturnCode.FAIL);
+        }
+        return  obj;
+    }
+
+
+    @GetMapping("/global")
+    public ReturnObj global() {
+        ReturnObj obj = new ReturnObj();
+        try {
+            obj.setData(igConfigService.getGlobalData());
             obj.setReturnCode(ReturnCode.SUCCESS);
         } catch (Exception e){
             logger.error(e.getMessage(), e);

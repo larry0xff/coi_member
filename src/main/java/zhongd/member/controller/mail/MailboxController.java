@@ -1,10 +1,7 @@
 package zhongd.member.controller.mail;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import zhongd.member.controller.BaseController;
 import zhongd.member.entity.DTO.mailbox.MailDTO;
 import zhongd.member.entity.ReturnObj;
@@ -25,6 +22,20 @@ public class MailboxController extends BaseController{
         ReturnObj obj = new ReturnObj();
         try{
             obj.setData(mailboxService.save(mail, getCurrentMember().getIgMember().getIgMemberId()));
+            obj.setReturnCode(ReturnCode.SUCCESS);
+        } catch (Exception e){
+            logger.error(e.getMessage(), e);
+            obj.setReturnCode(ReturnCode.FAIL);
+        }
+        return obj;
+
+    }
+
+    @GetMapping("/notifyList")
+    public ReturnObj notifyList(){
+        ReturnObj obj = new ReturnObj();
+        try{
+            obj.setData(mailboxService.notifyList( getCurrentMember().getIgMember().getIgMemberId()));
             obj.setReturnCode(ReturnCode.SUCCESS);
         } catch (Exception e){
             logger.error(e.getMessage(), e);

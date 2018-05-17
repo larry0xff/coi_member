@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import zhongd.member.dao.mailbox.IgMailMapper;
 import zhongd.member.entity.DO.mailbox.IgMail;
+import zhongd.member.entity.DTO.mailbox.IgMailDTO;
 import zhongd.member.entity.DTO.mailbox.MailDTO;
 
 import java.util.Date;
@@ -30,5 +31,10 @@ public class IgMailboxServiceImpl implements IgMailboxService {
         mailDO.setCreateBy(igMemberId);
         mailDO.setCreateTime(new Date());
         return igMailMapper.insertSelective(mailDO);
+    }
+
+    @Override
+    public List<MailDTO> notifyList(Integer igMemberId) {
+        return igMailMapper.notifyList(igMemberId);
     }
 }
