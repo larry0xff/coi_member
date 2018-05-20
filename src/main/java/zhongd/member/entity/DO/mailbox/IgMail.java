@@ -16,6 +16,16 @@ public class IgMail extends BaseDO {
     private String title;
     private String content;
     private String isRead;
+    private String isMemberRead;
+
+    public String getIsMemberRead() {
+        return isMemberRead;
+    }
+
+    public void setIsMemberRead(String isMemberRead) {
+        this.isMemberRead = isMemberRead;
+    }
+
     private String reply;
 
     public String getReply() {

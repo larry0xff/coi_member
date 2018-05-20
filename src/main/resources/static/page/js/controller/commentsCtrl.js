@@ -20,9 +20,20 @@ memberApp.controller('commentsCtrl', ['$scope', '$rootScope', '$http',
                 }
             });
         }
+        $scope.checkSwitch = function () {
+            $http.get($rootScope.contextPath + "/switch/check?name=COMMENT_MODULE").then(function (result) {
+                var data = result.data;
+                if(data.returnCode != 200) {
+                    Materialize.toast(data.msg, 2000);
+                } else {
+                    $scope.sw =  data.data;
+                }
+            });
+        };
         (function(){
             $scope.page = 1;
             getCommentList(0);
+            $scope.checkSwitch();
             $(window).scroll(function() {
                 if($(window).scrollTop() + $(window).height() == $(document).height()) {
                     getCommentList(1);
@@ -31,6 +42,10 @@ memberApp.controller('commentsCtrl', ['$scope', '$rootScope', '$http',
         })();
         //点击回复
         $scope.toReply = function(replyName, replyId){
+            if ($scope.sw.status == 1) {
+                alert($scope.sw.message);
+                return;
+            }
             var $w = $(window);
             $w.smoothScroll({position: 0});
             $scope.newComment = '@' + replyName + ' ';
@@ -44,6 +59,10 @@ memberApp.controller('commentsCtrl', ['$scope', '$rootScope', '$http',
         };
         //回复、发布评论
         $scope.addComment = function(){
+            if ($scope.sw.status == 1) {
+                alert($scope.sw.message);
+                return;
+            }
             var param = {
                 replyId: $scope.replyId,
                 content: $scope.newComment
@@ -61,6 +80,10 @@ memberApp.controller('commentsCtrl', ['$scope', '$rootScope', '$http',
             });
         };
         $scope.agree = function(c, flag){
+            if ($scope.sw.status == 1) {
+                alert($scope.sw.message);
+                return;
+            }
             $http.get($rootScope.contextPath + '/comment/agree?igCommentId=' + c.igCommentId + '&flag=' + flag).then(function(result){
                 var data = result.data;
                 if(data.returnCode != 200){

@@ -16,9 +16,18 @@ public class IgAdviceCollectionDTO {
     private String createTime;
     private String updateTime;
     private String orgName;
+    private Integer igOrgId;
     private String createBy;
     private String advicesAttachmentUrl;
     private Integer dayOut;
+
+    public Integer getIgOrgId() {
+        return igOrgId;
+    }
+
+    public void setIgOrgId(Integer igOrgId) {
+        this.igOrgId = igOrgId;
+    }
 
     public Integer getDayOut() {
         return dayOut;

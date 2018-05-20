@@ -33,7 +33,7 @@ spring:
       max-request-size: 100Mb
 mybatis:
   config:
-    logImpl: STDOUT_LOGGING
+    logImpl: SLF4J
     # Mybatis model 路径
     reasonable: true
     supportMethodsArguments: true

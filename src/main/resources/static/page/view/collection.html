@@ -32,8 +32,11 @@
         </div>
     </div>
 </article>
-<div ng-show="myAdvice == null">
+<div ng-show="myAdvice == null && collectionItem.status == 1">
     <h2>我的意见</h2>
     <textarea style="width: 100%" rows="10" placeholder="  请输入你的意见内容" ng-model="content"></textarea>
+    <div class="am-alert am-alert-danger" data-am-alert ng-if="errorMsg" id="errorMsg">
+        {{errorMsg}}
+    </div>
     <button type="button" class="am-btn am-btn-primary am-round am-center am-margin-top-lg" ng-click="addAdvice()">写好了，提交吧！</button>
 </div>

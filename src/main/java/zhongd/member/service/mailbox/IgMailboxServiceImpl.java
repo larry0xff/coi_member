@@ -30,6 +30,8 @@ public class IgMailboxServiceImpl implements IgMailboxService {
         mailDO.setTitle(mail.getTitle());
         mailDO.setCreateBy(igMemberId);
         mailDO.setCreateTime(new Date());
+        mailDO.setIsRead("N");
+        mailDO.setIsMemberRead("N");
         return igMailMapper.insertSelective(mailDO);
     }
 

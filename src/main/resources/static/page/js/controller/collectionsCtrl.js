@@ -1,6 +1,6 @@
 memberApp.controller('collectionsCtrl', ['$routeParams', '$rootScope', '$scope', '$http', function($routeParams, $rootScope, $scope, $http){
-    function getCollections(){
-        $http.get($rootScope.contextPath + '/advice/collection/list').then(function(result){
+    $scope.getCollections = function(){
+        $http.get($rootScope.contextPath + '/advice/collection/list?orgName=' + $scope.selectOrg).then(function(result){
            var data = result.data;
            if(data.returnCode != 200){
                console.log(data.msg);
@@ -8,8 +8,20 @@ memberApp.controller('collectionsCtrl', ['$routeParams', '$rootScope', '$scope',
                $scope.collections = data.data;
            }
         });
+    };
+    function getpagedata(){
+        $http.get($rootScope.contextPath + '/pagedata/home').then(function(result){
+            var data = result.data;
+            if(data.returnCode != 200){
+                alert(data.msg);
+            }else{
+                $scope.pagedata = data.data;
+            }
+        });
     }
     (function(){
-        getCollections();
+        $scope.selectOrg = "";
+        $scope.getCollections();
+        getpagedata();
     })();
 }]);

@@ -21,6 +21,9 @@
 <section ng-if="!sended">
     <button type="button" class="am-btn am-btn-primary am-round am-center" ng-click="send()">写好了，发送信件吧！</button>
 </section>
+<div class="am-alert am-alert-danger" data-am-alert ng-if="errorMsg" id="errorMsg">
+    {{errorMsg}}
+</div>
 <section ng-if="sended && !sendSuccess" class="am-vertical-align" style="height: 400px">
     <i class="am-icon-refresh am-icon-spin"></i>
 </section>

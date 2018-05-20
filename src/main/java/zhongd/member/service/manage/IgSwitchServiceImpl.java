@@ -27,4 +27,13 @@ public class IgSwitchServiceImpl implements IgSwitchService {
         updateObj.setStatus(status);
         return igSwitchMapper.updateByPrimaryKeySelective(updateObj) > 0;
     }
+
+    @Override
+    public IgSwitch getById(String name) {
+        IgSwitch igSwitch = new IgSwitch();
+        igSwitch.setName(name);
+        return igSwitchMapper.selectOne(igSwitch);
+    }
+
+
 }

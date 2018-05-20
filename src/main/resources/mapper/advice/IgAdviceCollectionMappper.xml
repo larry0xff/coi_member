@@ -33,9 +33,9 @@
         LEFT JOIN ig_user u1 ON (ac.create_by = u1.ig_user_id)
         LEFT JOIN ig_user u2 ON (ac.update_by = u2.ig_user_id)
         WHERE 1=1
-        AND ac.subject like #{subject}
-        AND o.name like #{orgName}
-        AND u1.realname like #{createBy}
+        AND (ac.subject like #{subject}
+        OR o.name like #{orgName}
+        OR u1.realname like #{createBy})
         <if test="status != null">
           AND status = #{status}
         </if>
@@ -43,7 +43,7 @@
     </select>
 
     <select id="getAdviceCollectionById" parameterType="Integer" resultType="zhongd.member.entity.DTO.advice.IgAdviceCollectionDTO">
-        SELECT ig_advice_collection_id as igAdviceCollectionId,subject,content,
+        SELECT ig_advice_collection_id as igAdviceCollectionId,subject,content, ac.ig_org_id as igOrgId,
         date_format(deadline, '%Y-%m-%d') as deadline, status, attachment_url as attachmentUrl, result_attachment_url as resultAttachmentUrl, advices_attachment_url as advicesAttachmentUrl,
         date_format(ac.create_time, '%Y-%m-%d') as createTime,date_format(ac.update_time, '%Y-%m-%d') as updateTime,
         u1.realname as createBy, u2.realname as updateBy, o.name as orgName, TIMESTAMPDIFF(HOUR,NOW(),deadline) AS dayOut

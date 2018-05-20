@@ -2,16 +2,27 @@
     <li><a href="#/home" class="am-icon-home">首页</a></li>
     <li class="am-active">征集列表</li>
 </ol>
+<form class="am-form-inline am-fr" role="form">
+    <form class="am-form-inline" role="form">
+        <div class="am-form-group">
+            <input type="text" class="am-form-field" placeholder="按照组织名称、发起者、主题搜索" ng-model="selectOrg">
+        </div>
+        <button type="submit" class="am-btn am-btn-primary" ng-click="getCollections()">搜索</button>
+    </form>
+</form>
+<br><br>
 <section>
     <div data-am-widget="list_news" class="am-list-news am-list-news-default" >
         <!--列表标题-->
         <div class="am-list-news-bd">
             <ul class="am-list">
+                <span ng-if="collections.length == 0">暂无数据</span>
                 <li class="am-g am-list-item-desced" ng-repeat="x in collections">
                     <a href="#/collection/{{x.igAdviceCollectionId}}"
                        class="am-list-item-hd ">{{x.subject}}</a>
                     <div class="am-list-item-text">
                         {{x.content | limitTo: 20}}...
+                        <span class="am-fr">{{x.orgName}}</span>
                     </div>
                 </li>
             </ul>

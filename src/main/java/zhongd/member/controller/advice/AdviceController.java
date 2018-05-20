@@ -1,15 +1,16 @@
 package zhongd.member.controller.advice;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import zhongd.member.controller.BaseController;
+import zhongd.member.entity.DO.advice.IgAdviceCollection;
+import zhongd.member.entity.DO.member.IgMember;
 import zhongd.member.entity.DTO.advice.IgAdviceCollectionDTO;
 import zhongd.member.entity.ReturnObj;
 import zhongd.member.service.advice.IgAdviceService;
 import zhongd.member.utils.constant.ReturnCode;
+
+import java.awt.font.ImageGraphicAttribute;
 
 /**
  * @author xiezd 2018-01-06 17:30
@@ -21,10 +22,14 @@ public class AdviceController extends BaseController {
     IgAdviceService igAdviceService;
 
     @GetMapping("/collection/list")
-    public ReturnObj getCollections(){
+    public ReturnObj getCollections(@RequestParam String orgName){
         ReturnObj obj = new ReturnObj();
         try{
-            obj.setData(igAdviceService.list(new IgAdviceCollectionDTO()));
+            IgAdviceCollectionDTO igAdviceCollection = new IgAdviceCollectionDTO();
+            igAdviceCollection.setOrgName(orgName);
+            igAdviceCollection.setSubject(orgName);
+            igAdviceCollection.setCreateBy(orgName);
+            obj.setData(igAdviceService.list(igAdviceCollection));
             obj.setReturnCode(ReturnCode.SUCCESS);
         }catch (Exception e){
             logger.error(e.getMessage(), e);
@@ -83,8 +88,14 @@ public class AdviceController extends BaseController {
     public ReturnObj save(String content, Integer igAdviceCollectionId){
         ReturnObj obj = new ReturnObj();
         try{
-            Integer memberId = getCurrentMember().getIgMember().getIgMemberId();
-            obj.setData(igAdviceService.saveRecord(content, igAdviceCollectionId, memberId));
+            IgMember member = getCurrentMember().getIgMember();
+            IgAdviceCollectionDTO adviceCollection = igAdviceService.getById(igAdviceCollectionId);
+            if (!adviceCollection.getIgOrgId().equals(member.getIgOrgId())) {
+                obj.setReturnCode(ReturnCode.PARAMETERS_ERROR);
+                obj.setMsg("你不属于这个组织，无法提交");
+                return obj;
+            }
+            obj.setData(igAdviceService.saveRecord(content, igAdviceCollectionId, member.getIgMemberId()));
             obj.setReturnCode(ReturnCode.SUCCESS);
         } catch (Exception e){
             logger.error(e.getMessage(), e);
